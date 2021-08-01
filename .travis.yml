@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t frontend-s7-dev -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true frontend-s7-dev npm run test
